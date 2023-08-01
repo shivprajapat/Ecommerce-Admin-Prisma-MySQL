@@ -80,4 +80,7 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+  .section-padding {
+    @apply space-y-4 p-8 pt-6;
+  }
 }

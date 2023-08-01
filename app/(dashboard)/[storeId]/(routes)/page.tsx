@@ -1,5 +1,7 @@
-import prismadb from "@/lib/prismadb";
 import React, { FC } from "react";
+
+import prismadb from "@/lib/prismadb";
+import { Heading } from "@/components/ui/heading";
 interface DashboardPageProps {
   params: { storeId: string };
 }
@@ -11,12 +13,12 @@ const DashboardPage: FC<DashboardPageProps> = async ({ params }) => {
   });
 
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+    <section className="section-padding">
+      <div>
+      <Heading title="Dashboard" description="Overview of your store" />
         <p>Active Store:{store?.name}</p>
       </div>
-    </div>
+    </section>
   );
 };
 

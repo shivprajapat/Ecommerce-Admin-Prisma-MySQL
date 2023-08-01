@@ -1,7 +1,15 @@
 import React from "react";
 
-const Billboards = () => {
-  return <div>Billboards</div>;
+import { Heading } from "@/components/ui/heading";
+
+const BillboardsPage = () => {
+  return (
+    <section className="section-padding">
+      <div>
+        <Heading title="Billboards" />
+      </div>
+    </section>
+  );
 };
 
-export default Billboards;
+export default BillboardsPage;

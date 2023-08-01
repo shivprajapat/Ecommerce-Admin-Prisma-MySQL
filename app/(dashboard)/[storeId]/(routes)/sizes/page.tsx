@@ -2,14 +2,14 @@ import React from "react";
 
 import { Heading } from "@/components/ui/heading";
 
-const CategoriesPage = () => {
+const SizesPage = () => {
   return (
     <section className="section-padding">
       <div>
-        <Heading title="Categories" />
+        <Heading title="Sizes" />
       </div>
     </section>
   );
 };
 
-export default CategoriesPage;
+export default SizesPage;
