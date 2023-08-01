@@ -23,7 +23,7 @@ export default function RootLayout({
         <body className={inter.className} suppressHydrationWarning={true}>
           <ToastProvider />
           <ModalProvider />
-          {children}
+          <main>{children}</main>
         </body>
       </html>
     </ClerkProvider>
