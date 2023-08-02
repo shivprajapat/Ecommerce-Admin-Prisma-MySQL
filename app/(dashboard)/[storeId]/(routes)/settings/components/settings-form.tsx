@@ -22,6 +22,8 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
 import { AlertModal } from "@/components/modals/alert-modal";
+import { ApiAlert } from "@/components/ui/api-alert";
+import { useOrigin } from "@/hooks/use-origin";
 const formSchema = z.object({
   name: z.string().min(2),
 });
@@ -34,7 +36,7 @@ interface SettingsFormProps {
 const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
-
+  const origin = useOrigin();
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -125,6 +127,11 @@ const SettingsForm: FC<SettingsFormProps> = ({ initialData }) => {
         onClose={() => setOpen(false)}
         onConfirm={onDelete}
         loading={loading}
+      />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        variant="public"
+        description={`${origin}/api/${params.storeId}`}
       />
     </>
   );
