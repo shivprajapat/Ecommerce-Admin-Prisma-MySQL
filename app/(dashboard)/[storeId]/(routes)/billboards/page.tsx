@@ -1,13 +1,11 @@
 import React from "react";
 
-import { Heading } from "@/components/ui/heading";
+import BillboardClient from "./components/client";
 
 const BillboardsPage = () => {
   return (
     <section className="section-padding">
-      <div>
-        <Heading title="Billboards" />
-      </div>
+      <BillboardClient />
     </section>
   );
 };
