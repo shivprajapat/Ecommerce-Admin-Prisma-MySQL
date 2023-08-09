@@ -1,13 +1,19 @@
 "use client";
-import React from "react";
+import React, { FC } from "react";
 import { Plus } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
+import { BillboardColumn, columns } from "./columns";
+import { DataTable } from "@/components/ui/data-table";
+import { ApiList } from "@/components/ui/api-list";
 
-const BillboardClient = () => {
+interface BillboardClientProps {
+  data: BillboardColumn[];
+}
+const BillboardClient: FC<BillboardClientProps> = ({ data }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -15,7 +21,7 @@ const BillboardClient = () => {
     <div>
       <div className="flex items-center justify-between pb-2">
         <Heading
-          title="Billboards (0)"
+          title={`Billboards (${data.length})`}
           description="Manage billboards for your store"
         />
 
@@ -26,6 +32,12 @@ const BillboardClient = () => {
         </Button>
       </div>
       <Separator />
+      <DataTable searchKey="label" columns={columns} data={data} />
+      <div className="pb-2">
+        <Heading title="API" description="API Calls for Billboards" />
+      </div>
+      <Separator />
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </div>
   );
 };
