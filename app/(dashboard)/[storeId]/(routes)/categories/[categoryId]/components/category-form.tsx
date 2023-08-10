@@ -19,7 +19,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Trash } from "lucide-react";
+import { Loader2, Trash } from "lucide-react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import {
@@ -36,12 +36,12 @@ const formSchema = z.object({
   billboardId: z.string().min(1),
 });
 
-type CategoryFormValues = z.infer<typeof formSchema>
+type CategoryFormValues = z.infer<typeof formSchema>;
 
 interface CategoryFormProps {
   initialData: Category | null;
   billboards: Billboard[];
-};
+}
 
 const CategoryForm: FC<CategoryFormProps> = ({ initialData, billboards }) => {
   const params = useParams();
@@ -50,7 +50,7 @@ const CategoryForm: FC<CategoryFormProps> = ({ initialData, billboards }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit category" : "Create category";
+  const title = initialData ? "Edit Category" : "Create Category";
   const description = initialData ? "Edit a category." : "Add a new category";
   const toastMessage = initialData ? "Category updated." : "Category created.";
   const action = initialData ? "Save changes" : "Create";
@@ -178,6 +178,7 @@ const CategoryForm: FC<CategoryFormProps> = ({ initialData, billboards }) => {
             />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
+            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {action}
           </Button>
         </form>

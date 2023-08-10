@@ -20,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import ImageUpload from "@/components/ui/image-upload";
-import { Trash } from "lucide-react";
+import { Loader2, Trash } from "lucide-react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
@@ -41,7 +41,7 @@ const BillboardForm: FC<BillboardFormProps> = ({ initialData }) => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit billboard" : "Create billboard";
+  const title = initialData ? "Edit Billboard" : "Create Billboard";
   const description = initialData ? "Edit a billboard." : "Add a new billboard";
   const toastMessage = initialData
     ? "Billboard updated."
@@ -162,6 +162,7 @@ const BillboardForm: FC<BillboardFormProps> = ({ initialData }) => {
             />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
+            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {action}
           </Button>
         </form>
