@@ -1,13 +1,31 @@
 import React from "react";
 
-import { Heading } from "@/components/ui/heading";
+import { format } from "date-fns";
 
-const SizesPage = () => {
+import prismadb from "@/lib/prismadb";
+
+import SizesClient from "./components/client";
+import { SizeColumn } from "./components/columns";
+
+const SizesPage = async ({ params }: { params: { storeId: string } }) => {
+  const sizes = await prismadb.size.findMany({
+    where: {
+      storeId: params.storeId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  const formattedSizes: SizeColumn[] = sizes.map((item) => ({
+    id: item.id,
+    name: item.name,
+    value: item.value,
+    createdAt: format(item.createdAt, "MMMM do, yyyy"),
+  }));
   return (
     <section className="section-padding">
-      <div>
-        <Heading title="Sizes" />
-      </div>
+      <SizesClient data={formattedSizes} />
     </section>
   );
 };
