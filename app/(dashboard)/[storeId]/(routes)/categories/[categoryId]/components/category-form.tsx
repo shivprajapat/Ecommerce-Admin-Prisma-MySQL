@@ -51,9 +51,9 @@ const CategoryForm: FC<CategoryFormProps> = ({ initialData, billboards }) => {
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit Category" : "Create Category";
-  const description = initialData ? "Edit a category." : "Add a new category";
-  const toastMessage = initialData ? "Category updated." : "Category created.";
-  const action = initialData ? "Save changes" : "Create";
+  const description = initialData ? "Edit a Category." : "Add a new Category";
+  const toastMessage = initialData ? "Category Updated." : "Category Created.";
+  const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<CategoryFormValues>({
     resolver: zodResolver(formSchema),

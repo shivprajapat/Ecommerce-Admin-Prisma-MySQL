@@ -42,11 +42,11 @@ const BillboardForm: FC<BillboardFormProps> = ({ initialData }) => {
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit Billboard" : "Create Billboard";
-  const description = initialData ? "Edit a billboard." : "Add a new billboard";
+  const description = initialData ? "Edit a Billboard." : "Add a new Billboard";
   const toastMessage = initialData
-    ? "Billboard updated."
-    : "Billboard created.";
-  const action = initialData ? "Save changes" : "Create";
+    ? "Billboard Updated."
+    : "Billboard Created.";
+    const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<BillboardFormValues>({
     resolver: zodResolver(formSchema),

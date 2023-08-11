@@ -42,9 +42,9 @@ const SizeForm: FC<SizeFormProps> = ({ initialData }) => {
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit Size" : "Create Size";
-  const description = initialData ? "Edit a size." : "Add a new size";
-  const toastMessage = initialData ? "Size updated." : "Size created.";
-  const action = initialData ? "Save changes" : "Create";
+  const description = initialData ? "Edit a Size." : "Add a new Size";
+  const toastMessage = initialData ? "Size Updated." : "Size Created.";
+  const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<SizeFormValues>({
     resolver: zodResolver(formSchema),
